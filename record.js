@@ -10,4 +10,4 @@ var Record = function(artist, title, genre, price){
 Record.prototype = {
 };
 
-modules.export = Record;
+module.exports = Record;
