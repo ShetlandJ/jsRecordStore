@@ -15,9 +15,7 @@ describe( "Record Store", function(){
     record3 = new Record("Rollins Band", "Weight", "Heavy Rock", 5);
     record4 = new Record("T-Bone Burnett", "Tooth Of Crime", "Folk", 13);
 
-    var inventory = [record1, record2, record3, record4];
-
-    recordStore = new RecordStore("Big Al's Records", "Glasgow", inventory);
+    recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
   });
 
   it("should have a name", function(){
@@ -28,7 +26,10 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore.city, "Glasgow");
   });
 
-  xit("should have an inventory");
+  it("should have an inventory that starts with 0", function(){
+    assert.strictEqual(recordStore.inventory.length, 0);
+  });
+
   xit("should have a balance");
   xit("should have be able to add records to its inventory");
 
