@@ -18,6 +18,20 @@ RecordStore.prototype = {
     }
     return recordDetails;
   },
+  buy: function(record, collector){
+    if (this.inventory.includes(collector.sell(record))) {
+
+      var recordCostHalved = (record.price / 2);
+      this.balance -= recordCostHalved;
+      collector.cash += recordCostHalved;
+    } else {
+
+      var recordCost = (record.price + (record.price * 0.75));
+      this.balance -= recordCost;
+      collector.cash += recordCost;
+    }
+    this.add(record);
+  },
   sell: function(record){
     if (this.inventory.includes(record)) {
       this.balance += record.price;
