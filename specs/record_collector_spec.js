@@ -6,7 +6,7 @@ describe( "Record Collector", function(){
   var recordCollector;
 
   beforeEach(function(){
-    recordCollector = new RecordCollector("James");
+    recordCollector = new RecordCollector("James", 100);
   });
 
   it("should have a name", function(){
