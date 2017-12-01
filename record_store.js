@@ -32,6 +32,14 @@ RecordStore.prototype = {
       total += record.price;
     }
     return total;
-  }
+  },
+  financeReport: function(){
+    var total = (this.balance + this.valueOfRecords());
+
+    return "The shop's balance currently sits at: £" + this.balance + ". The total value of the records in your inventory is: £" + this.valueOfRecords() + ". The total value of the shop is £" + total;
+  },
+  byGenre: function(genreInput){
+    return _.filter(this.inventory, { genre: genreInput });
+  },
 }
 module.exports = RecordStore;

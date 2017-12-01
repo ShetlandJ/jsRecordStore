@@ -48,21 +48,30 @@ describe( "Record Store", function(){
 
   it("should be able to print out inventory", function(){
     var recordStoreInventory = recordStore2.inventory;
-    assert.deepStrictEqual(recordStore2.getInventory(), recordStoreInventory )
+    assert.deepStrictEqual(recordStore2.getInventory(), recordStoreInventory );
   });
 
   it("should be able to sell a record", function(){
     recordStore2.sell(record1);
-    assert.strictEqual(recordStore2.inventory.length, 3)
-    assert.strictEqual(recordStore2.balance, 10008)
+    assert.strictEqual(recordStore2.inventory.length, 3);
+    assert.strictEqual(recordStore2.balance, 10008);
   });
 
   it("should let the owner know if they try to sell a record that doesn't exist", function(){
-    assert.strictEqual(recordStore2.sell(record5), "You don't have that record in your inventory!")
+    assert.strictEqual(recordStore2.sell(record5), "You don't have that record in your inventory!");
   });
 
   it("should be able to calculate the value of all the records in the inventory", function(){
-    assert.strictEqual(recordStore2.valueOfRecords(), 36)
+    assert.strictEqual(recordStore2.valueOfRecords(), 36);
+  });
+
+  it("should be able to give the owner a financial report", function(){
+    assert.strictEqual(recordStore2.financeReport(), "The shop's balance currently sits at: £10000. The total value of the records in your inventory is: £36. The total value of the shop is £10036");
+  });
+
+  it("should be able to return records by genre", function(){
+    var rockArray = [record1, record2]
+    assert.deepStrictEqual(recordStore2.byGenre("Rock"), rockArray);
   });
 
 

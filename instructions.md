@@ -6,7 +6,6 @@ Use constructors and prototypes throughout as well.
 
 ## Part B
 
-- Create a method that reports the financial situation of the Store, showing the balance and value of inventory.
 - Create a method that allows the store to view all Records of a given Genre.
 
 ## Part C
