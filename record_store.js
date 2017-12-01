@@ -17,6 +17,14 @@ RecordStore.prototype = {
       recordDetails.push(record);
     }
     return recordDetails;
+  },
+  sell: function(record){
+    if (this.inventory.contains(record)) {
+      this.balance += record.price;
+      this.inventory.splice( this.inventory.indexOf(record), 1 );
+    } else {
+      console.log("You don't have that record in your inventory!")
+    }
   }
 }
-  module.exports = RecordStore;
+module.exports = RecordStore;

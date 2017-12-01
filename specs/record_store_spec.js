@@ -49,4 +49,13 @@ describe( "Record Store", function(){
     assert.deepStrictEqual(recordStore2.getInventory(), recordStoreInventory )
   });
 
+  it("should be able to sell a record", function(){
+    recordStore2.sell(record1);
+    assert.strictEqual(recordStore2.inventory.length, 3)
+    assert.strictEqual(recordStore2.balance, 10008)
+  });
+
+
+
+
 });
