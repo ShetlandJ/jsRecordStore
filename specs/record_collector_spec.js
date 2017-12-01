@@ -33,5 +33,11 @@ describe( "Record Collector", function(){
     assert.strictEqual(recordCollector.collection.length, 2);
   });
 
+  it("should be able to view the value of their collection", function(){
+    recordCollector.buy(record5)
+    recordCollector.buy(record6)
+    assert.strictEqual(recordCollector.valueOfRecords(), 17);
+  });
+
 
 });

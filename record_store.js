@@ -20,21 +20,21 @@ RecordStore.prototype = {
   },
   buy: function(record, collector){
     if (collector.collection.includes(record)) {
-    if (this.inventory.includes(collector.sell(record))) {
+      if (this.inventory.includes(collector.sell(record))) {
 
-      var recordCostHalved = (record.price / 2);
-      this.balance -= recordCostHalved;
-      collector.cash += recordCostHalved;
+        var recordCostHalved = (record.price / 2);
+        this.balance -= recordCostHalved;
+        collector.cash += recordCostHalved;
+      } else {
+
+        var recordCost = (record.price + (record.price * 0.75));
+        this.balance -= recordCost;
+        collector.cash += recordCost;
+      }
+      this.add(record);
     } else {
-
-      var recordCost = (record.price + (record.price * 0.75));
-      this.balance -= recordCost;
-      collector.cash += recordCost;
+      return "You can't sell that return, you don't own it, pal!"
     }
-    this.add(record);
-  } else {
-    return "You can't sell that return, you don't own it, pal!"
-  }
 
   },
   sell: function(record){

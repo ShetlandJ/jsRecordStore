@@ -76,7 +76,6 @@ describe( "Record Store", function(){
 
     recordStore2.buy(record5, recordCollector);
 
-
     assert.strictEqual(recordCollector.cash, 112.25);
     assert.strictEqual(recordCollector.collection.length, 2);
     assert.strictEqual(recordStore2.balance, 9987.75);

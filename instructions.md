@@ -6,7 +6,6 @@ Use constructors and prototypes throughout as well.
 
 ## Part C
 
-- The RecordCollector shouldn't be able to buy a Record if he can't afford it.
 - The RecordCollector should be able to view the total value of their collection
 - The RecordCollector should be able to view the total value of all records of a given Genre
 - The RecordCollector should be able to view their most valuable record.
