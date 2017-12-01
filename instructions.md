@@ -4,13 +4,6 @@ Your task is to use JS TDD to model a Record Store.
 
 Use constructors and prototypes throughout as well.
 
-## Part A
-
-- Create a Record object that has an Artist, Title, Genre, and Price
-- Create a Record Store that has a Name, City and an Inventory.
-- Give the Record Store a Balance.
-- Add some Records to the Store's Inventory.
-
 ## Part B
 
 - Create a method that prints out the Record's properties as a string.
@@ -33,4 +26,4 @@ Use constructors and prototypes throughout as well.
 
 ## Extension
 
-- If you haven't already: refactor your code to use enumeration throughout. 
+- If you haven't already: refactor your code to use enumeration throughout.

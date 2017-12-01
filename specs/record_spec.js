@@ -6,7 +6,7 @@ describe( "Record", function(){
   var record;
 
   beforeEach(function(){
-    record = new Record("Les Savy Fav", "Go Forth", "Alt Rock", 8);
+    record = new Record("Les Savy Fav", "Go Forth", "Rock", 8);
   });
 
   it("should have an artist", function(){
@@ -18,11 +18,15 @@ describe( "Record", function(){
   });
 
   it("should have a genre", function(){
-    assert.strictEqual(record.genre, "Alt Rock");
+    assert.strictEqual(record.genre, "Rock");
   });
 
   it("should have a price", function(){
     assert.strictEqual(record.price, 8);
+  });
+
+  it("should be able to return the details of a record as a string", function(){
+    assert.strictEqual(record.details(record), "Artist: Les Savy Fav, Title: Go Forth, Genre: Rock, Price: 8");
   });
 
 
