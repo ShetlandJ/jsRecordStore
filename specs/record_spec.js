@@ -17,7 +17,10 @@ describe( "Record", function(){
     assert.strictEqual(record.title, "Go Forth");
   });
 
-  xit("should have a genre");
+  it("should have a genre", function(){
+    assert.strictEqual(record.genre, "Alt Rock");
+  });
+  
   xit("should have a price");
 
 
