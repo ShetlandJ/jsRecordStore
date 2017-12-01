@@ -8,6 +8,6 @@ var Record = function(artist, title, genre, price){
 };
 
 Record.prototype = {
-}
+};
 
-export.modules = Record;
+modules.export = Record;
