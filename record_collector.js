@@ -7,8 +7,11 @@ var RecordCollector = function(name, cash){
 };
 
 RecordCollector.prototype = {
-  add: function(record){
+  buy: function(record){
     this.collection.push(record)
+  },
+  sell: function(record){
+    this.collection.splice( this.collection.indexOf(record), 1 );
   }
 }
 
