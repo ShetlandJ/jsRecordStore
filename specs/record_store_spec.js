@@ -65,6 +65,13 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore2.balance, 10008);
   });
 
+  it("can't purchase from a customer if the customer doesn't actually own the record", function(){
+
+    assert.strictEqual(    recordStore2.buy(record1, recordCollector), "You can't sell that return, you don't own it, pal!");
+    assert.strictEqual(recordCollector.cash, 100);
+    assert.strictEqual(recordCollector.collection.length, 3);
+  });
+
   it("should be able to buy a record from a collector", function(){
 
     recordStore2.buy(record5, recordCollector);

@@ -19,6 +19,7 @@ RecordStore.prototype = {
     return recordDetails;
   },
   buy: function(record, collector){
+    if (collector.collection.includes(record)) {
     if (this.inventory.includes(collector.sell(record))) {
 
       var recordCostHalved = (record.price / 2);
@@ -31,6 +32,10 @@ RecordStore.prototype = {
       collector.cash += recordCost;
     }
     this.add(record);
+  } else {
+    return "You can't sell that return, you don't own it, pal!"
+  }
+
   },
   sell: function(record){
     if (this.inventory.includes(record)) {

@@ -6,8 +6,6 @@ Use constructors and prototypes throughout as well.
 
 ## Part C
 
-- Create a RecordCollector (or Customer) constructor who can buy and sell records.
-- The RecordCollector should have cash that increase and decreases with buying and selling.
 - The RecordCollector shouldn't be able to buy a Record if he can't afford it.
 - The RecordCollector should be able to view the total value of their collection
 - The RecordCollector should be able to view the total value of all records of a given Genre
