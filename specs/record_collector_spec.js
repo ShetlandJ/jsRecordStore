@@ -60,4 +60,12 @@ describe( "Record Collector", function(){
   });
 
 
+
+  it("should be able to sort this collection by value", function(){
+    recordCollector.buy(record5)
+    recordCollector.buy(record6)
+    recordCollector.buy(record7)
+    assert.deepStrictEqual(recordCollector.sort("price"), [record7, record6, record5]);
+  });
+
 });

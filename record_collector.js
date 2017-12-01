@@ -28,6 +28,10 @@ RecordCollector.prototype = {
     return _.maxBy(this.collection, "price");
   },
 
+  sort: function(price){
+      return _.orderBy(this.collection, [price], ["desc"]);
+    }
+
 }
 
 module.exports = RecordCollector;
