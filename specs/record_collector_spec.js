@@ -1,5 +1,7 @@
 var assert = require("assert")
-var RecordCollector = require("../record_collector.js")
+var RecordCollector = require("../record_collector.js");
+var Record = require("../record")
+
 
 describe( "Record Collector", function(){
 
@@ -12,3 +14,5 @@ describe( "Record Collector", function(){
   it("should have a name", function(){
     assert.strictEqual(recordCollector.name, "James");
   });
+
+});

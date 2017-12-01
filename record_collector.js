@@ -7,7 +7,9 @@ var RecordCollector = function(name, cash){
 };
 
 RecordCollector.prototype = {
-
+  add: function(record){
+    this.collection.push(record)
+  }
 }
 
 module.exports = RecordCollector;
