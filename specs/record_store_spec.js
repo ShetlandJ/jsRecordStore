@@ -20,7 +20,9 @@ describe( "Record Store", function(){
     recordStore = new RecordStore("Big Al's Records", "Glasgow", inventory);
   });
 
-  xit("should have a name");
+  it("should have a name", function(){
+    assert.strictEqual(recordStore.name, "Big Al's Records");
+  });
   xit("should have a town");
   xit("should have an inventory");
   xit("should have a balance");
