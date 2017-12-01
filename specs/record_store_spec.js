@@ -1,11 +1,13 @@
 var assert = require("assert")
-var RecordStore = require("../record_store")
-var Record = require("../record")
+var RecordStore = require("../record_store.js")
+var Record = require("../record.js")
+var RecordCollector = require("../record_collector.js")
 
 describe( "Record Store", function(){
 
   var recordStore;
   var record;
+  var recordCollector;
 
 
   beforeEach(function(){
@@ -15,6 +17,12 @@ describe( "Record Store", function(){
     record3 = new Record("Rollins Band", "Weight", "Heavy Rock", 5);
     record4 = new Record("T-Bone Burnett", "Tooth Of Crime", "Folk", 13);
     record5 = new Record("XTC", "Nonsuch", "New Wave", 7);
+
+    recordCollector = new RecordCollector("James", 100);
+
+    recordCollector.collection.push(record3);
+    recordCollector.collection.push(record4);
+    recordCollector.collection.push(record5);
 
 
     recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
@@ -55,6 +63,22 @@ describe( "Record Store", function(){
     recordStore2.sell(record1);
     assert.strictEqual(recordStore2.inventory.length, 3);
     assert.strictEqual(recordStore2.balance, 10008);
+  });
+
+  it("can't purchase from a customer if the customer doesn't actually own the record", function(){
+
+    assert.strictEqual(    recordStore2.buy(record1, recordCollector), "You can't sell that return, you don't own it, pal!");
+    assert.strictEqual(recordCollector.cash, 100);
+    assert.strictEqual(recordCollector.collection.length, 3);
+  });
+
+  it("should be able to buy a record from a collector", function(){
+
+    recordStore2.buy(record5, recordCollector);
+
+    assert.strictEqual(recordCollector.cash, 112.25);
+    assert.strictEqual(recordCollector.collection.length, 2);
+    assert.strictEqual(recordStore2.balance, 9987.75);
   });
 
   it("should let the owner know if they try to sell a record that doesn't exist", function(){
