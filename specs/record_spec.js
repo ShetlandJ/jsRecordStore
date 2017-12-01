@@ -12,8 +12,11 @@ describe( "Record", function(){
   it("should have an artist", function(){
     assert.strictEqual(record.artist, "Les Savy Fav");
   });
-  
-  xit("should have a title");
+
+  it("should have a title", function(){
+    assert.strictEqual(record.title, "Go Forth");
+  });
+
   xit("should have a genre");
   xit("should have a price");
 
