@@ -20,10 +20,10 @@ describe( "Record Store", function(){
     recordStore = new RecordStore("Big Al's Records", "Glasgow", inventory);
   });
 
-  it("should have a name");
-  it("should have a town");
-  it("should have an inventory");
-  it("should have a balance");
-  it("should have be able to add records to its inventory");
+  xit("should have a name");
+  xit("should have a town");
+  xit("should have an inventory");
+  xit("should have a balance");
+  xit("should have be able to add records to its inventory");
 
   });
