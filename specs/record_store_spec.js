@@ -34,6 +34,13 @@ describe( "Record Store", function(){
       assert.strictEqual(recordStore.balance, 10000)
   });
 
-  xit("should have be able to add records to its inventory");
+  it("should have be able to add records to its inventory", function(){
+    recordStore.add(record1)
+    recordStore.add(record2)
+    recordStore.add(record3)
+    recordStore.add(record4)
+
+    assert.strictEqual(recordStore.inventory.length, 4)
+  });
 
   });
