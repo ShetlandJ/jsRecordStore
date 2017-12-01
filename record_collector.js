@@ -13,14 +13,17 @@ RecordCollector.prototype = {
   sell: function(record){
     this.collection.splice( this.collection.indexOf(record), 1 );
   },
-  valueOfRecords: function(){
+  valueOfRecords: function(collection){
     var total = 0;
-    for (var record of this.collection){
+    for (var record of collection){
       total += record.price;
     }
     return total;
   },
-
+  valueByGenre: function(genreInput){
+    var genreCollection = _.filter(this.collection, { genre: genreInput });
+    return this.valueOfRecords(genreCollection);
+  },
 }
 
 module.exports = RecordCollector;
