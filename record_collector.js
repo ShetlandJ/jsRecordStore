@@ -27,10 +27,16 @@ RecordCollector.prototype = {
   mostValueable: function(){
     return _.maxBy(this.collection, "price");
   },
-
   sort: function(price){
-      return _.orderBy(this.collection, [price], ["desc"]);
+    return _.orderBy(this.collection, [price], ["desc"]);
+  },
+  compare: function(collector1, collector2){
+    if (collector1.valueOfRecords(collector1.collection) > collector2.valueOfRecords(collector2.collection)) {
+      return collector1.name + " has a more valuable collection!"
+    } else {
+      return collector2.name + " has a more valuable collection!"
     }
+  }
 
 }
 
