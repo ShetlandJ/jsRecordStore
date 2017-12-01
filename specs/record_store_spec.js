@@ -30,7 +30,10 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore.inventory.length, 0);
   });
 
-  xit("should have a balance");
+  it("should have a starting balance of 10,000", function(){
+      assert.strictEqual(recordStore.balance, 10000)
+  });
+
   xit("should have be able to add records to its inventory");
 
   });
