@@ -32,9 +32,9 @@ RecordCollector.prototype = {
   },
   compare: function(collector1, collector2){
     if (collector1.valueOfRecords(collector1.collection) > collector2.valueOfRecords(collector2.collection)) {
-      return collector1.name + " has a more valuable collection!"
+      return collector1.name + " has a more valuable collection!" + "(value: " + collector1.valueOfRecords(collector1.collection) + ")";
     } else {
-      return collector2.name + " has a more valuable collection!"
+      return collector2.name + " has a more valuable collection!" + " (value: " + collector2.valueOfRecords(collector2.collection) + ")";
     }
   }
 

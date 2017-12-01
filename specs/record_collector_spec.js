@@ -78,7 +78,7 @@ describe( "Record Collector", function(){
     recordCollector2.buy(record6)
     recordCollector2.buy(record7)
 
-    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection!");
+    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection! (value: 50)");
   });
 
 });
