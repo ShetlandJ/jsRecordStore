@@ -24,6 +24,10 @@ RecordCollector.prototype = {
     var genreCollection = _.filter(this.collection, { genre: genreInput });
     return this.valueOfRecords(genreCollection);
   },
+  mostValueable: function(){
+    return _.maxBy(this.collection, "price");
+  },
+
 }
 
 module.exports = RecordCollector;

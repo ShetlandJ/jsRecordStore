@@ -52,5 +52,12 @@ describe( "Record Collector", function(){
     assert.strictEqual(recordCollector.valueByGenre("Rock"), 18);
   });
 
+  it("should be able to view their most valueable record", function(){
+    recordCollector.buy(record5)
+    recordCollector.buy(record6)
+    recordCollector.buy(record7)
+    assert.strictEqual(recordCollector.mostValueable(), record7);
+  });
+
 
 });
