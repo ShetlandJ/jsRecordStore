@@ -4,10 +4,6 @@ Your task is to use JS TDD to model a Record Store.
 
 Use constructors and prototypes throughout as well.
 
-## Part B
-
-- Create a method that allows the store to view all Records of a given Genre.
-
 ## Part C
 
 - Create a RecordCollector (or Customer) constructor who can buy and sell records.
