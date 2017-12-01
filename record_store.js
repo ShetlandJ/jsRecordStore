@@ -25,6 +25,13 @@ RecordStore.prototype = {
     } else {
       return "You don't have that record in your inventory!";
     }
+  },
+  valueOfRecords: function(){
+    var total = 0;
+    for (var record of this.inventory){
+      total += record.price;
+    }
+    return total;
   }
 }
 module.exports = RecordStore;

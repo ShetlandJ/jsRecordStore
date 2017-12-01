@@ -61,6 +61,10 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore2.sell(record5), "You don't have that record in your inventory!")
   });
 
+  it("should be able to calculate the value of all the records in the inventory", function(){
+    assert.strictEqual(recordStore2.valueOfRecords(), 36)
+  });
+
 
 
 });
