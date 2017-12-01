@@ -19,11 +19,11 @@ RecordStore.prototype = {
     return recordDetails;
   },
   sell: function(record){
-    if (this.inventory.contains(record)) {
+    if (this.inventory.includes(record)) {
       this.balance += record.price;
       this.inventory.splice( this.inventory.indexOf(record), 1 );
     } else {
-      console.log("You don't have that record in your inventory!")
+      return "You don't have that record in your inventory!";
     }
   }
 }

@@ -14,6 +14,8 @@ describe( "Record Store", function(){
     record2 = new Record("At The Drive-In", "Interalia", "Rock", 10);
     record3 = new Record("Rollins Band", "Weight", "Heavy Rock", 5);
     record4 = new Record("T-Bone Burnett", "Tooth Of Crime", "Folk", 13);
+    record5 = new Record("XTC", "Nonsuch", "New Wave", 7);
+
 
     recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
     recordStore2 = new RecordStore("Big Steve's Records", "Lenzie", [record1, record2, record3, record4]);
@@ -55,6 +57,9 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore2.balance, 10008)
   });
 
+  it("should let the owner know if they try to sell a record that doesn't exist", function(){
+    assert.strictEqual(recordStore2.sell(record5), "You don't have that record in your inventory!")
+  });
 
 
 
