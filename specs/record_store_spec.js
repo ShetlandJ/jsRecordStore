@@ -16,6 +16,7 @@ describe( "Record Store", function(){
     record4 = new Record("T-Bone Burnett", "Tooth Of Crime", "Folk", 13);
 
     recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
+    recordStore2 = new RecordStore("Big Steve's Records", "Lenzie", [record1, record2, record3, record4]);
   });
 
   it("should have a name", function(){
@@ -31,10 +32,10 @@ describe( "Record Store", function(){
   });
 
   it("should have a starting balance of 10,000", function(){
-      assert.strictEqual(recordStore.balance, 10000)
+    assert.strictEqual(recordStore.balance, 10000)
   });
 
-  it("should have be able to add records to its inventory", function(){
+  it("should be able to add records to its inventory", function(){
     recordStore.add(record1)
     recordStore.add(record2)
     recordStore.add(record3)
@@ -43,4 +44,9 @@ describe( "Record Store", function(){
     assert.strictEqual(recordStore.inventory.length, 4)
   });
 
+  it("should be able to print out inventory", function(){
+    var recordStoreInventory = recordStore2.inventory;
+    assert.deepStrictEqual(recordStore2.getInventory(), recordStoreInventory )
   });
+
+});

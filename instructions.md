@@ -6,7 +6,6 @@ Use constructors and prototypes throughout as well.
 
 ## Part B
 
-- Create a method that prints out the Record's properties as a string.
 - Create a method that lists the inventory.
 - Create a method so the Record Store can sell a Record and adjusts the Store's balance to account for the Record being sold.
 - Create a method that reports the financial situation of the Store, showing the balance and value of inventory.
