@@ -25,8 +25,13 @@ describe( "Record Collector", function(){
     assert.strictEqual(recordCollector.name, "James");
   });
 
+  it("should have a budget", function(){
+    assert.strictEqual(recordCollector.cash, 100);
+  });
+
   it("should be able to add items to their inventory", function(){
     recordCollector.buy(record5)
+
     assert.strictEqual(recordCollector.collection.length, 1);
   });
 
@@ -35,12 +40,14 @@ describe( "Record Collector", function(){
     recordCollector.buy(record6)
     recordCollector.buy(record7)
     recordCollector.sell(record5);
+
     assert.strictEqual(recordCollector.collection.length, 2);
   });
 
   it("should be able to view the value of their collection", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
+
     assert.strictEqual(recordCollector.valueOfRecords(recordCollector.collection), 17);
   });
 
@@ -51,6 +58,7 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.strictEqual(recordCollector.valueByGenre("Rock"), 18);
   });
 
@@ -58,6 +66,7 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.strictEqual(recordCollector.mostValueable(), record7);
   });
 
@@ -65,6 +74,7 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.deepStrictEqual(recordCollector.sort("price"), [record7, record6, record5]);
   });
 
