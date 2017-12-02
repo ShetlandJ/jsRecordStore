@@ -6,9 +6,10 @@ var RecordCollector = require("../record_collector.js")
 describe( "Record Store", function(){
 
   var recordStore;
+  var recordStore2;
   var record;
   var recordCollector;
-
+  var recordCollector2
 
   beforeEach(function(){
 
@@ -23,7 +24,6 @@ describe( "Record Store", function(){
     recordCollector.collection.push(record3);
     recordCollector.collection.push(record4);
     recordCollector.collection.push(record5);
-
 
     recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
     recordStore2 = new RecordStore("Big Steve's Records", "Lenzie", [record1, record2, record3, record4]);
@@ -60,14 +60,29 @@ describe( "Record Store", function(){
   });
 
   it("should be able to sell a record", function(){
-    recordStore2.sell(record1);
+    recordStore2.sell(record1, recordCollector);
+
+    assert.strictEqual(recordCollector.collection.length, 4);
+    assert.strictEqual(recordCollector.cash, 92);
+
     assert.strictEqual(recordStore2.inventory.length, 3);
     assert.strictEqual(recordStore2.balance, 10008);
   });
 
+  it("shouldn't be able to sell a record to a customer who can't afford", function(){
+    recordCollector2 = new RecordCollector("Brian", 0);
+    recordCollector2.collection.push(record1);
+
+    assert.strictEqual(recordStore2.sell(record1, recordCollector2), "You don't have enough money!");
+
+    assert.strictEqual(recordCollector2.collection.length, 1);
+    assert.strictEqual(recordCollector2.cash, 0);
+
+  });
+
   it("can't purchase from a customer if the customer doesn't actually own the record", function(){
 
-    assert.strictEqual(    recordStore2.buy(record1, recordCollector), "You can't sell that return, you don't own it, pal!");
+    assert.strictEqual(recordStore2.buy(record1, recordCollector), "You can't sell that return, you don't own it, pal!");
     assert.strictEqual(recordCollector.cash, 100);
     assert.strictEqual(recordCollector.collection.length, 3);
   });
@@ -82,7 +97,8 @@ describe( "Record Store", function(){
   });
 
   it("should let the owner know if they try to sell a record that doesn't exist", function(){
-    assert.strictEqual(recordStore2.sell(record5), "You don't have that record in your inventory!");
+
+    assert.strictEqual(recordStore2.buy(record5, recordCollector2), "You can't sell that return, you don't own it, pal!");
   });
 
   it("should be able to calculate the value of all the records in the inventory", function(){

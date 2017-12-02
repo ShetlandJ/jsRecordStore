@@ -17,14 +17,21 @@ describe( "Record Collector", function(){
 
 
     recordCollector = new RecordCollector("James", 100);
+    recordCollector2 = new RecordCollector("Brian", 100)
+
   });
 
   it("should have a name", function(){
     assert.strictEqual(recordCollector.name, "James");
   });
 
+  it("should have a budget", function(){
+    assert.strictEqual(recordCollector.cash, 100);
+  });
+
   it("should be able to add items to their inventory", function(){
     recordCollector.buy(record5)
+
     assert.strictEqual(recordCollector.collection.length, 1);
   });
 
@@ -33,12 +40,14 @@ describe( "Record Collector", function(){
     recordCollector.buy(record6)
     recordCollector.buy(record7)
     recordCollector.sell(record5);
+
     assert.strictEqual(recordCollector.collection.length, 2);
   });
 
   it("should be able to view the value of their collection", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
+
     assert.strictEqual(recordCollector.valueOfRecords(recordCollector.collection), 17);
   });
 
@@ -49,6 +58,7 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.strictEqual(recordCollector.valueByGenre("Rock"), 18);
   });
 
@@ -56,6 +66,7 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.strictEqual(recordCollector.mostValueable(), record7);
   });
 
@@ -63,11 +74,11 @@ describe( "Record Collector", function(){
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
+
     assert.deepStrictEqual(recordCollector.sort("price"), [record7, record6, record5]);
   });
 
   it("should be able to compare the value of their collection against another record collector", function(){
-    recordCollector2 = new RecordCollector("Brian", 100)
     recordCollector.buy(record5)
     recordCollector.buy(record6)
     recordCollector.buy(record7)
@@ -78,7 +89,19 @@ describe( "Record Collector", function(){
     recordCollector2.buy(record6)
     recordCollector2.buy(record7)
 
-    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection! (value: 50)");
+    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection! (£50 vs £32)");
+  });
+
+  it("should be able to have an equal collection value to another collector", function(){
+    recordCollector.buy(record5)
+    recordCollector.buy(record6)
+    recordCollector.buy(record7)
+
+    recordCollector2.buy(record5)
+    recordCollector2.buy(record6)
+    recordCollector2.buy(record7)
+
+    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "The value of both collectors' records are the same! (£32)");
   });
 
 });
