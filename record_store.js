@@ -37,14 +37,25 @@ RecordStore.prototype = {
     }
 
   },
-  sell: function(record){
-    if (this.inventory.includes(record)) {
-      this.balance += record.price;
-      this.inventory.splice( this.inventory.indexOf(record), 1 );
-    } else {
-      return "You don't have that record in your inventory!";
+
+  sell: function(record, recordCollector){
+    var collectorCash = recordCollector.cash;
+
+    console.log(collectorCash);
+
+    if (collectorCash >= record.price){
+      if (this.inventory.includes(record)) {
+        this.balance += record.price;
+        this.inventory.splice( this.inventory.indexOf(record), 1 );
+
+        recordCollector.buy(record);
+      } else {
+        return "You don't have that record in your inventory!";
+      }
     }
+    return "You don't have enough money!"
   },
+
   valueOfRecords: function(){
     var total = 0;
     for (var record of this.inventory){
@@ -52,11 +63,13 @@ RecordStore.prototype = {
     }
     return total;
   },
+
   financeReport: function(){
     var total = (this.balance + this.valueOfRecords());
 
     return "The shop's balance currently sits at: £" + this.balance + ". The total value of the records in your inventory is: £" + this.valueOfRecords() + ". The total value of the shop is £" + total;
   },
+
   byGenre: function(genreInput){
     return _.filter(this.inventory, { genre: genreInput });
   },
