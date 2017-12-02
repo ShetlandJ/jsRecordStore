@@ -42,11 +42,11 @@ RecordCollector.prototype = {
     var collector2Value = collector2.valueOfRecords(collector2.collection);
 
     if (collector1Value > collector2Value) {
-      return collector1.name + " has a more valuable collection!" + "(value: " + collector1Value + ")";
+      return collector1.name + " has a more valuable collection!" + "(£" + collector1Value + " vs £" + collector2Value + ")";
     } else if (collector1Value === collector2Value) {
-      return "The value of both collectors' records are the same!"
+      return "The value of both collectors' records are the same! (£" + collector1Value +")"
     } else {
-      return collector2.name + " has a more valuable collection!" + " (value: " + collector2Value + ")";
+      return collector2.name + " has a more valuable collection!" + " (£" + collector2Value + " vs £" + collector1Value + ")";
     }
   }
 };

@@ -11,6 +11,7 @@ RecordStore.prototype = {
   add: function(record){
     this.inventory.push(record);
   },
+
   getInventory: function() {
     var recordDetails = [];
     for (var record of this.inventory){
@@ -18,36 +19,32 @@ RecordStore.prototype = {
     }
     return recordDetails;
   },
+
   buy: function(record, collector){
     if (collector.collection.includes(record)) {
       if (this.inventory.includes(collector.sell(record))) {
 
-        var recordCostHalved = (record.price / 2);
-        this.balance -= recordCostHalved;
-        collector.cash += recordCostHalved;
-      } else {
+        var recordBuyCostHalved = (record.price / 2);
+        this.balance -= recordBuyCostHalved;
+        collector.cash += recordBuyCostHalved;
 
-        var recordCost = (record.price + (record.price * 0.75));
-        this.balance -= recordCost;
-        collector.cash += recordCost;
+      } else {
+        var recordBuyCost = (record.price + (record.price * 0.75));
+        this.balance -= recordBuyCost;
+        collector.cash += recordBuyCost;
       }
       this.add(record);
     } else {
       return "You can't sell that return, you don't own it, pal!"
     }
-
   },
 
   sell: function(record, recordCollector){
-    var collectorCash = recordCollector.cash;
 
-    console.log(collectorCash);
-
-    if (collectorCash >= record.price){
+    if (recordCollector.cash >= record.price){
       if (this.inventory.includes(record)) {
         this.balance += record.price;
         this.inventory.splice( this.inventory.indexOf(record), 1 );
-
         recordCollector.buy(record);
       } else {
         return "You don't have that record in your inventory!";

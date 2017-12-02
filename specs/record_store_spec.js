@@ -11,7 +11,6 @@ describe( "Record Store", function(){
   var recordCollector;
   var recordCollector2
 
-
   beforeEach(function(){
 
     record1 = new Record("Les Savy Fav", "Go Forth", "Rock", 8);
@@ -25,7 +24,6 @@ describe( "Record Store", function(){
     recordCollector.collection.push(record3);
     recordCollector.collection.push(record4);
     recordCollector.collection.push(record5);
-
 
     recordStore = new RecordStore("Big Al's Records", "Glasgow", []);
     recordStore2 = new RecordStore("Big Steve's Records", "Lenzie", [record1, record2, record3, record4]);
@@ -79,9 +77,7 @@ describe( "Record Store", function(){
 
     assert.strictEqual(recordCollector2.collection.length, 1);
     assert.strictEqual(recordCollector2.cash, 0);
-    //
-    // assert.strictEqual(recordStore2.inventory.length, 3);
-    // assert.strictEqual(recordStore2.balance, 10000);
+
   });
 
   it("can't purchase from a customer if the customer doesn't actually own the record", function(){

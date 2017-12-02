@@ -79,7 +79,7 @@ describe( "Record Collector", function(){
     recordCollector2.buy(record6)
     recordCollector2.buy(record7)
 
-    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection! (value: 50)");
+    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "Brian has a more valuable collection! (£50 vs £32)");
   });
 
   it("should be able to have an equal collection value to another collector", function(){
@@ -91,7 +91,7 @@ describe( "Record Collector", function(){
     recordCollector2.buy(record6)
     recordCollector2.buy(record7)
 
-    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "The value of both collectors' records are the same!");
+    assert.deepStrictEqual(recordCollector.compare(recordCollector, recordCollector2), "The value of both collectors' records are the same! (£32)");
   });
 
 });
